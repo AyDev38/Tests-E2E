@@ -31,6 +31,7 @@ describe('Test de 0Bank', () => {
     cy.url().should('include', '#');
   });
 
+  //Ce test ne passe pas car le lien n'est pas bon 
   it('Test du bouton "Nos Tarifs"', () => {
     // Cliquer sur le bouton "Nos Tarifs"
     cy.contains('button', 'Nos Tarifs').click();
@@ -68,6 +69,7 @@ describe('Test de 0Bank', () => {
     cy.url().should('include', 'cgv.php');
   });
 
+  //Ce test ne passe pas car le lien n'est pas bon 
   it('Test du bouton "Condition tarifaire" dans le footer', () => {
     // Cliquer sur le bouton "Condition tarifaire"
     cy.get('footer a:contains("Condition tarifaire")').click();

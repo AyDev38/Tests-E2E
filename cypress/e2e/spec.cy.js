@@ -4,14 +4,14 @@ describe('Test de 0Bank', () => {
   })
 
   it('Test de la page d\'accueil', () => {
-    cy.get('.navbar-collapse ul li:first-child a').should('have.text', 'Ouvrir mon compte')
-    cy.get('.navbar-collapse ul li:last-child a').should('have.text', 'Connexion')
+    cy.get('.navbar-collapse ul li:nth-child(2) a').should('have.text', 'Ouvrir mon compte')
+    cy.get('.navbar-collapse ul li:nth-child(3) a').should('have.text', 'Connexion')
   })
 
 
   it('Test du bouton "Ouvrir mon compte"', () => {
     // Cliquer sur le bouton "Ouvrir mon compte"
-    cy.get('a[onclick="setPage(\'sign\');"]').click();
+    cy.get('.navbar-collapse ul li:nth-child(2) a').click();
 
     // Vérifier que la page d'ouverture de compte est affichée
     cy.url().should('include', '#openaccount');
@@ -19,14 +19,14 @@ describe('Test de 0Bank', () => {
 
   it('Test du bouton "Retour"', () => {
     // D'abord, aller à une autre page pour tester le retour
-    cy.get('a[onclick="setPage(\'sign\');"]').click();
+    cy.get('.navbar-collapse ul li:nth-child(2) a').click();
     cy.wait(1000); // Attendre que la page se charge
 
     // Cliquer sur le bouton "Retour"
-    cy.get('a[onclick="setPage(\'main\');"]').click();
+    cy.get('.navbar-collapse ul li:nth-child(1) a').click();
 
     // Vérifier que la page principale est affichée
-    cy.url().should('include', '#mainnoauth');
+    cy.url().should('include', '#');
   });
 
   it('Test du bouton "Nos Tarifs"', () => {

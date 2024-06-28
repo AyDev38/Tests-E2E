@@ -42,7 +42,7 @@ describe('Test de 0Bank', () => {
     // Test du bouton "Ouvrir mon compte" dans le footer
     cy.get('footer a[href="#openaccount"]').click();
     cy.url().should('include', '#openaccount');
-    
+
     // Retour à la page principale
     cy.visit('http://151.80.32.16:8965/');
 
@@ -76,20 +76,29 @@ describe('Test de 0Bank', () => {
 });
 
 
-// Test de connexion
 describe('Test de connexion', () => {
   beforeEach(() => {
     cy.visit('http://151.80.32.16:8965/')
   })
 
-      it("Test de connexion", () => {
-        cy.get(".navbar-collapse ul li:last-child a").click()
-        cy.get("#mailco").type("test@test.com")
-        cy.get("#mailco").should("have.value", "test@test.com")
-        cy.get("#connecttoaccount input[type=password]").type("test")
-        cy.get("#connecttoaccount input[type=password]").should("have.value", "test")
-        cy.get("#connecttoaccount input[type=submit]").click()
-        cy.url().should("include", "/index.php")
-      })
+  it("Test de connexion", () => {
+    // Cliquez sur le lien de connexion dans la barre de navigation
+    cy.get(".navbar-collapse ul li:last-child a").click();
+    
+    // Remplissez le champ email et vérifiez la valeur
+    cy.get("#mailco").type("test@test.com");
+    cy.get("#mailco").should("have.value", "test@test.com");
+    
+    // Remplissez le champ mot de passe et vérifiez la valeur
+    cy.get("#connecttoaccount input[type=password]").type("test");
+    cy.get("#connecttoaccount input[type=password]").should("have.value", "test");
+    
+    // Cliquez sur le bouton de soumission dans le formulaire de connexion
+    cy.get("#connecttoaccount .submit-button").should('be.visible').click();
+    
+    // Vérifiez que l'URL inclut "/index.php" après la connexion
+    cy.url().should("include", "/index.php");
   })
+})
+
 

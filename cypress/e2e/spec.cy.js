@@ -124,7 +124,7 @@ describe('Test du formulaire "Ouvrir mon compte"', () => {
     cy.get('#openaccount input[name="cguvalid"]').check();
 
     // Soumettre le formulaire
-    cy.get('#openaccount button[type="submit"]').click();
+    cy.get('button[type="submit"]').click();
 
     // Vérifier que la redirection ou la réponse attendue est correcte
     cy.url().should('include', '/expected-redirect-url');
@@ -153,7 +153,7 @@ describe('Test inscription/connexion d\'un compte', () => {
     cy.get('#openaccount input[name="cguvalid"]').check();
 
     // Soumettre le formulaire
-    cy.get('#openaccount button[type="submit"]').click();
+    cy.get('button[type="submit"]').click();
 
     // Vérifier que la redirection ou la réponse attendue est correcte
     cy.url().should('include', '/expected-redirect-url');
